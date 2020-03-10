@@ -17,6 +17,14 @@ python3 main.py
 
 data/にtsvファイルが作成されます．
 
+### スケジュール
+
+下記のbranchに3時間に1回の頻度で出力されます．
+
+https://github.com/earlsuke/covid19-inspection-result-scraper-for-mie/tree/gh-pages
+
 ### 参考情報
 
-https://www.pref.mie.lg.jp/YAKUMUS/HP/m0068000066.htm
+- 三重県庁　新型コロナウイルス感染症について　https://www.pref.mie.lg.jp/YAKUMUS/HP/m0068000066.htm
+- 東京都 新型コロナウイルス感染症対策サイト / Tokyo COVID-19 Task Force website https://github.com/tokyo-metropolitan-gov/covid19
+- covid19hokkaido_scraping https://github.com/Kanahiro/covid19hokkaido_scraping
