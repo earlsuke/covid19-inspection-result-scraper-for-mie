@@ -7,7 +7,7 @@ URL = 'https://www.pref.mie.lg.jp/YAKUMUS/HP/m0068000071_00005.htm'
 
 def main():
 
-    resp = requests.get(URL)
+    resp = requests.get(URL, timeout=(3.0, 7.5))
     resp.encoding = resp.apparent_encoding
 
     if resp.status_code != 200:
