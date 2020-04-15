@@ -22,19 +22,12 @@ def main():
 
     # parse html into an element
     root = lxml.html.fromstring(resp.text)
-    # XP = '//*[@id="section1"]/div/div/div[1]'
-    # items = root.xpath("//*[@id='section1']/div/div/div[1]//tr")
-    # items = root.xpath(XP)
     items = root.find_class("main-text")[0].findall("div/table/tbody/tr")
-    print(items)
 
     with open('data/data.tsv', 'w') as wb:
         N = len(items)
         for num, i in enumerate(items):
-            print("nchildren:", [x.text_content() for x in i.getchildren()])
-            # tentative
             if any([x.text_content() == None for x in i.getchildren()]):
-                print("skip")
                 continue
 
             if num == N-1:
@@ -44,13 +37,11 @@ def main():
                 data = [x.text.replace(' ','').replace('\u3000', '') for x in i.getchildren()]
             else:
                 # date, hihokensya, inspections, positive cases, negative cases
-                # data = [zen_to_han(str(x.text_content())) for x in i.getchildren()]
                 data = []
 
                 for ix, tr in enumerate(i.getchildren()):
 
                     text = zen_to_han(clean_string(str(tr.text_content())))
-                    print("TEXT::", text)
 
                     if ix == 1:
                         pmatch = HIHOKEN_NUM_PAT.search(text)
@@ -67,8 +58,6 @@ def main():
                     else:
                         data.append(text)
                     
-                print("cleaned:", data)
-                print("ok:", num, "/", N)
                 wb.write('\t'.join(data) + '\n')
     
 
